@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Cortes - Barbearia Waldiney Oliveira</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1C2526;
+            color: #E0E0E0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #E8B923;
+            font-size: 24px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        /* Filtro de dias */
+        #dayFilter {
+            width: 90%;
+            max-width: 300px;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #2E2E2E;
+            border: 1px solid #E8B923;
+            border-radius: 8px;
+            color: #E0E0E0;
+            font-size: 16px;
+        }
+
+        /* Lista de agendamentos */
+        #appointmentList {
+            width: 90%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .appointment-card {
+            background-color: #2E2E2E;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-left: 5px solid #E8B923;
+        }
+
+        .appointment-card p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .appointment-card p strong {
+            color: #E8B923;
+        }
+
+        /* Mensagem de vazio */
+        #noAppointments {
+            display: none;
+            text-align: center;
+            font-size: 16px;
+            color: #E8B923;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            #dayFilter {
+                font-size: 14px;
+            }
+
+            .appointment-card p {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Agenda de Cortes - Barbearia Waldiney Oliveira</h1>
+    <select id="dayFilter" onchange="filterAppointments()">
+        <option value="">Todos os Dias</option>
+        <option value="Segunda-feira">Segunda-feira</option>
+        <option value="Terça-feira">Terça-feira</option>
+        <option value="Quarta-feira">Quarta-feira</option>
+        <option value="Quinta-feira">Quinta-feira</option>
+        <option value="Sexta-feira">Sexta-feira</option>
+        <option value="Sábado">Sábado</option>
+        <option value="Domingo">Domingo</option>
+    </select>
+    <div id="appointmentList"></div>
+    <p id="noAppointments">Nenhum agendamento encontrado.</p>
+
+    <script>
+        // Carregar agendamentos ao iniciar
+        document.addEventListener('DOMContentLoaded', loadAppointments);
+
+        async function loadAppointments() {
+            try {
+                // Aqui você deve configurar o caminho correto para o arquivo appointments.json
+                // Para teste local, pode usar um servidor como 'http://localhost:8000/appointments.json'
+                const response = await fetch('appointments.json');
+                const appointments = await response.json();
+                displayAppointments(appointments);
+            } catch (error) {
+                console.error('Erro ao carregar agendamentos:', error);
+                document.getElementById('noAppointments').style.display = 'block';
+            }
+        }
+
+        function displayAppointments(appointments) {
+            const appointmentList = document.getElementById('appointmentList');
+            const noAppointments = document.getElementById('noAppointments');
+            const selectedDay = document.getElementById('dayFilter').value;
+
+            // Filtrar agendamentos pendentes e pelo dia selecionado (se houver)
+            const filteredAppointments = appointments.filter(appt => 
+                appt.status === 'pending' && (!selectedDay || appt.day === selectedDay)
+            );
+
+            appointmentList.innerHTML = ''; // Limpar lista
+            if (filteredAppointments.length === 0) {
+                noAppointments.style.display = 'block';
+                return;
+            }
+
+            noAppointments.style.display = 'none';
+            filteredAppointments.forEach(appt => {
+                const card = document.createElement('div');
+                card.className = 'appointment-card';
+                card.innerHTML = `
+                    <p><strong>Cliente:</strong> ${appt.client}</p>
+                    <p><strong>Serviço:</strong> ${appt.service}</p>
+                    <p><strong>Data:</strong> ${appt.date} (${appt.day}) às ${appt.time}</p>
+                    <p><strong>Valor:</strong> R$${appt.value.toFixed(2)}</p>
+                    <p><strong>Pagamento:</strong> ${appt.payment}</p>
+                `;
+                appointmentList.appendChild(card);
+            });
+        }
+
+        function filterAppointments() {
+            loadAppointments();
+        }
+    </script>
+</body>
+</html>

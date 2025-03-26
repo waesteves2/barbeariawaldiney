@@ -1,0 +1,127 @@
+[
+  {
+    "client": "welton alves esteves",
+    "service": "Corte degradê",
+    "day": "Terça-feira",
+    "time": "11:00",
+    "value": 50,
+    "status": "completed",
+    "date": "25/03/25"
+  },
+  {
+    "client": "Daniela",
+    "service": "Corte degradê - R$50,00",
+    "day": "Terça-feira",
+    "time": "14:00",
+    "value": 0,
+    "status": "completed",
+    "date": "25/03/25"
+  },
+  {
+    "client": "Daniela",
+    "service": "Barba e cabelo",
+    "day": "Terça-feira",
+    "time": "15:00",
+    "value": 75,
+    "status": "completed",
+    "date": "25/03/25"
+  },
+  {
+    "client": "WELTON ALVES ETEVES",
+    "service": "Corte degradê",
+    "day": "Segunda-feira",
+    "time": "10:00",
+    "value": 50,
+    "status": "completed",
+    "date": "24/03/25"
+  },
+  {
+    "client": "Welton alves esteves",
+    "service": "Corte degradê",
+    "day": "Segunda-feira",
+    "time": "08:00",
+    "value": 50,
+    "status": "completed",
+    "date": "24/03/25"
+  },
+  {
+    "client": "Daniela",
+    "service": "Luzes",
+    "day": "Domingo",
+    "time": "14:00",
+    "value": 80,
+    "payment": "PIX",
+    "status": "completed",
+    "date": "23/03/25"
+  },
+  {
+    "client": "Daniela",
+    "service": "Corte degradê",
+    "day": "Domingo",
+    "date": "23/03/25",
+    "time": "13:00",
+    "value": 50,
+    "payment": "PIX",
+    "status": "completed"
+  },
+  {
+    "client": "Welton alves esteves",
+    "service": "Barba e cabelo",
+    "day": "Domingo",
+    "date": "23/03/25",
+    "time": "13:00",
+    "value": 75,
+    "payment": "Dinheiro",
+    "status": "completed"
+  },
+  {
+    "client": "Daniela",
+    "service": "Barba e cabelo",
+    "day": "Domingo",
+    "date": "23/03/25",
+    "time": "14:00",
+    "value": 75,
+    "payment": "Cartão",
+    "status": "completed"
+  },
+  {
+    "client": "Barbearia",
+    "service": "Corte degradê",
+    "day": "Segunda-feira",
+    "date": "23/03/25",
+    "time": "18:00",
+    "value": 50,
+    "payment": "PIX",
+    "status": "completed"
+  },
+  {
+    "client": "Barbearia",
+    "service": "Barba e cabelo",
+    "day": "Segunda-feira",
+    "date": "23/03/25",
+    "time": "18:00",
+    "value": 75,
+    "payment": "PIX",
+    "status": "completed"
+  },
+  {
+    "client": "Daniela",
+    "service": "Cabelo e barba no ozônio",
+    "day": "Quinta-feira",
+    "date": "26/03/25",
+    "time": "18:00",
+    "value": 115,
+    "payment": "PIX",
+    "status": "pending"
+  },
+  {
+    "client": "Marina",
+    "service": "Cortes adultos",
+    "day": "Segunda-feira",
+    "date": "30/03/25",
+    "time": "18:00",
+    "value": 58,
+    "payment": "Cartão",
+    "status": "pending"
+  }
+]
